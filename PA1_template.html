@@ -61,6 +61,9 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>First, we load some libraries that we’ll need. Then, the data is loaded from the <code>activity.csv</code> file and the <code>date</code> column is converted from a factor to a Date object.</p>
 <pre class="r"><code>library(ggplot2)
 library(plyr)
+library(knitr)
+opts_chunk$set(fig.path='figures/')
+
 activity &lt;- read.csv(&quot;activity.csv&quot;)
 activity$date &lt;- as.Date(activity$date, &quot;%Y-%m-%d&quot;)</code></pre>
 </div>

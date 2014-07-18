@@ -20,6 +20,9 @@ object.
 ```{r loading_data}
 library(ggplot2)
 library(plyr)
+library(knitr)
+opts_chunk$set(fig.path='figures/')
+
 activity <- read.csv("activity.csv")
 activity$date <- as.Date(activity$date, "%Y-%m-%d")
 ```

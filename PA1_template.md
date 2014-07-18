@@ -16,6 +16,9 @@ object.
 ```r
 library(ggplot2)
 library(plyr)
+library(knitr)
+opts_chunk$set(fig.path='figures/')
+
 activity <- read.csv("activity.csv")
 activity$date <- as.Date(activity$date, "%Y-%m-%d")
 ```
@@ -35,7 +38,7 @@ steps_per_day <- ddply(activity, "date", summarize,
 qplot(x=steps_per_day$steps, xlab="Total Number of Steps per Day", binwidth=500)
 ```
 
-![plot of chunk total_steps_histogram](./PA1_template_files/figure-html/total_steps_histogram.png) 
+![plot of chunk total_steps_histogram](figures/total_steps_histogram.png) 
 
 We can then calculate the mean and median of steps across
 all dates:
@@ -70,7 +73,7 @@ daily_pattern <- ddply(activity, "interval", summarize,
 qplot(interval, avg.steps, data=daily_pattern, geom="line")
 ```
 
-![plot of chunk daily_pattern_plot](./PA1_template_files/figure-html/daily_pattern_plot.png) 
+![plot of chunk daily_pattern_plot](figures/daily_pattern_plot.png) 
 
 We can then identify the interval which has the highest mean:
 
@@ -119,7 +122,7 @@ steps_per_day <- ddply(updated_activity, "date", summarize,
 qplot(x=steps_per_day$steps, xlab="Total Number of Steps per Day", binwidth=500)
 ```
 
-![plot of chunk total_steps_historgram_imputed](./PA1_template_files/figure-html/total_steps_historgram_imputed.png) 
+![plot of chunk total_steps_historgram_imputed](figures/total_steps_historgram_imputed.png) 
 
 When we recalculate the mean and median total number of steps per day, we
 find that both values have incresed. Interestingly, it seems both values are
@@ -158,7 +161,7 @@ daily_pattern_per_daytype <- ddply(updated_activity, c("day.type", "interval"), 
 qplot(interval, avg.steps, data=daily_pattern_per_daytype, facets=day.type ~ ., geom="line")
 ```
 
-![plot of chunk weekday_analysis](./PA1_template_files/figure-html/weekday_analysis.png) 
+![plot of chunk weekday_analysis](figures/weekday_analysis.png) 
 
 It appears that the plots for both weekday and weekend activity have similar
 shapes. The weekday graph reaches a higher max value, but weekend activity seems
